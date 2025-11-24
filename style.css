@@ -16,20 +16,22 @@ body {
 .cronometro {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .tempo {
   font-size: 8rem;
-  justify-content: center;
   width: 200px;
 }
 .botao {
   font-size: 2rem;
   margin: 10px;
   padding: 10px;
+  background-color: #c4c4c442;
+  border-radius: 4px;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
 }
-span {
-  display: inline;
+
+.botao:hover {
+  background-color: #75757563;
 }
