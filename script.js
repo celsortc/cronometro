@@ -9,16 +9,23 @@ var interval;
 var cronPausado = false;
 
 iniciar.onclick = () => {
+  iniciar.disabled = true;
+  reiniciar.disabled = false;
+  pausar.disabled = false;
+  var mili;
+  var sec;
+  var min;
+
   if (cronPausado === true) {
-    var mili = +formataNumero(milisegundos.innerHTML);
-    var sec = +formataNumero(segundos.innerHTML);
+    mili = +formataNumero(milisegundos.innerHTML);
+    sec = +formataNumero(segundos.innerHTML);
+    min = +formataNumero(minutos.innerHTML);
   } else {
-    var mili = +milisegundos.innerHTML;
-    var sec = +segundos.innerHTML;
+    mili = +milisegundos.innerHTML;
+    sec = +segundos.innerHTML;
+    min = +minutos.innerHTML;
   }
 
-  // segundos.innerHTML = 55;
-  btnToggle();
   interval = setInterval(() => {
     cronPausado = false;
     if (mili < 990) {
@@ -33,7 +40,6 @@ iniciar.onclick = () => {
       if (sec > 59) {
         sec = 0;
         segundos.innerHTML = formataNumero(sec, "sec");
-        var min = +minutos.innerHTML;
         min++;
         minutos.innerHTML = formataNumero(min, "min");
       }
@@ -53,18 +59,25 @@ function formataNumero(numero, tipo) {
   return numero.toString().padStart(2, "0");
 }
 
-function btnToggle() {
-  if (iniciar.disabled === true) {
-    iniciar.disabled = false;
-    pausar.disabled = true;
-  } else {
-    iniciar.disabled = true;
-    pausar.disabled = false;
-  }
-}
-
 pausar.onclick = () => {
-  clearInterval(interval);
-  btnToggle();
+  pausar.disabled = true;
+  iniciar.disabled = false;
   cronPausado = true;
+  clearInterval(interval);
+};
+
+reiniciar.onclick = () => {
+  reiniciar.disabled = true;
+  pausar.disabled = true;
+  iniciar.disabled = false;
+  cronPausado = false;
+
+  clearInterval(interval);
+
+  milisegundos.innerHTML = "00";
+  segundos.innerHTML = "00";
+  minutos.innerHTML = "00";
+
+  mili = 0;
+  sec = 0;
 };

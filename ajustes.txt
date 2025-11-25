@@ -1,0 +1,5 @@
+Consegui fazer a lógica funcionar do jeito que eu queria, porém já consigo ver melhorias no futuro.
+
+a forma com que eu faço é muito "manual" acredito que utilizando Date ficaria com um fluxo melhor, e mais facil de medir.
+além disso, notei que ao trocar de abas, ele perde o foco, e acaba por nao continuar com o timer, preciso ver uma lógica que faça com que
+ao trocar a aba o timer continue, vi alguns exemplos de outros sites que colocam o temporizador no title, interessante preciso avaliar.
