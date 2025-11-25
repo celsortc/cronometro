@@ -22,38 +22,35 @@ iniciar.onclick = () => {
   interval = setInterval(() => {
     cronPausado = false;
     if (mili < 990) {
-      console.log("entrou 1", mili, sec, milisegundos.innerHTML);
-
       mili += 10;
-      milisegundos.innerHTML = formataNumero(mili);
+      milisegundos.innerHTML = formataNumero(mili, "mili");
     } else if (mili === 990) {
-      console.log("entrou2", mili, sec, milisegundos.innerHTML);
-
       mili = 0;
+      milisegundos.innerHTML = formataNumero(mili, "mili");
       var sec = +segundos.innerHTML;
       sec++;
-      segundos.innerHTML = formataNumero(sec);
+      segundos.innerHTML = formataNumero(sec, "sec");
       if (sec > 59) {
         sec = 0;
-        segundos.innerHTML = formataNumero(sec);
+        segundos.innerHTML = formataNumero(sec, "sec");
         var min = +minutos.innerHTML;
         min++;
-        minutos.innerHTML = formataNumero(min);
+        minutos.innerHTML = formataNumero(min, "min");
       }
     }
-  }, 10);
+  }, 1);
 };
 
-function formataNumero(numero) {
+function formataNumero(numero, tipo) {
   if (cronPausado === true) {
     return numero.toString().padEnd(3, "0");
-  } else {
-    if (numero < 100) {
-      return numero.toString().padStart(2, "0");
-    } else {
-      return numero.toString().slice(0, 2);
-    }
   }
+  if (tipo === "mili") {
+    return numero.toString().padStart(3, "0").slice(0, 2);
+  }
+  console.log("chega?");
+
+  return numero.toString().padStart(2, "0");
 }
 
 function btnToggle() {
