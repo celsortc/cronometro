@@ -28,7 +28,7 @@ body {
 }
 
 .tempo {
-  font-size: 128px;
+  font-size: 8rem;
   display: flex;
   justify-content: center;
   margin: 10px;
@@ -65,8 +65,7 @@ footer a {
   color: #0051ff;
   position: relative;
 }
-footer p {
-}
+
 footer a::after {
   content: "";
   position: absolute;

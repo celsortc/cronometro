@@ -1,9 +1,14 @@
 const iniciar = document.querySelector(".iniciar");
 const pausar = document.querySelector(".pausar");
 const reiniciar = document.querySelector(".reiniciar");
+
 const milisegundos = document.querySelector(".milisecs");
 const segundos = document.querySelector(".segundos");
 const minutos = document.querySelector(".minutos");
+
+var mili = 0;
+var sec = 0;
+var min = 0;
 
 var interval;
 var cronPausado = false;
@@ -12,9 +17,6 @@ iniciar.onclick = () => {
   iniciar.disabled = true;
   reiniciar.disabled = false;
   pausar.disabled = false;
-  var mili;
-  var sec;
-  var min;
 
   if (cronPausado === true) {
     mili = +formataNumero(milisegundos.innerHTML);
@@ -34,7 +36,7 @@ iniciar.onclick = () => {
     } else if (mili === 990) {
       mili = 0;
       milisegundos.innerHTML = formataNumero(mili, "mili");
-      var sec = +segundos.innerHTML;
+      sec = +segundos.innerHTML;
       sec++;
       segundos.innerHTML = formataNumero(sec, "sec");
       if (sec > 59) {
@@ -44,7 +46,7 @@ iniciar.onclick = () => {
         minutos.innerHTML = formataNumero(min, "min");
       }
     }
-  }, 10);
+  }, 1);
 };
 
 function formataNumero(numero, tipo) {
@@ -54,7 +56,6 @@ function formataNumero(numero, tipo) {
   if (tipo === "mili") {
     return numero.toString().padStart(3, "0").slice(0, 2);
   }
-  console.log("chega?");
 
   return numero.toString().padStart(2, "0");
 }
@@ -74,10 +75,11 @@ reiniciar.onclick = () => {
 
   clearInterval(interval);
 
-  milisegundos.innerHTML = "00";
-  segundos.innerHTML = "00";
-  minutos.innerHTML = "00";
+  mili = "00";
+  sec = "00";
+  min = "00";
 
-  mili = 0;
-  sec = 0;
+  milisegundos.innerHTML = mili;
+  segundos.innerHTML = sec;
+  minutos.innerHTML = min;
 };
