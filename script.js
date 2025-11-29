@@ -27,7 +27,6 @@ iniciar.onclick = () => {
     sec = +segundos.innerHTML;
     min = +minutos.innerHTML;
   }
-
   interval = setInterval(() => {
     cronPausado = false;
     if (mili < 990) {
@@ -46,7 +45,7 @@ iniciar.onclick = () => {
         minutos.innerHTML = formataNumero(min, "min");
       }
     }
-  }, 1);
+  }, 10);
 };
 
 function formataNumero(numero, tipo) {
