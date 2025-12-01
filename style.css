@@ -55,8 +55,14 @@ body {
   justify-content: center;
 }
 
+button:disabled {
+  opacity: 25%;
+  cursor: not-allowed;
+}
+
 .botao:hover {
   background-color: #75757563;
+  border: 1px solid #75757563;
 }
 
 footer {
